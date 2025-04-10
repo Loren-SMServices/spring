@@ -1,31 +1,33 @@
 import { Component } from "@angular/core";
 import { MiservicioService } from "../../services/miservicio.service";
 import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: 'app-micomponente',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './micomponente.component.html',
   styleUrl: './micomponente.component.css'
 })
 export class MicomponenteComponent { 
 
-  mensaje: any[] = []; 
+  datos: any[] = []; 
+  mensaje: String = '';
   nuevoMensaje: string = ''; 
  
   constructor(private miServicio : MiservicioService ) {} 
  
   obtenerMensaje() { 
     this.miServicio.obtenerMensaje().subscribe((data) => { 
-      this.mensaje = data.users; 
+      this.datos = data.users; 
       console.log('LOREN' + this.mensaje);
     }); 
   } 
 
- /* enviarMensaje() { 
+  enviarMensaje() { 
     this.miServicio.enviarMensaje(this.nuevoMensaje).subscribe((respuesta) => { 
       console.log(respuesta); 
       this.mensaje = respuesta; 
     }); 
-  } */
+  } 
 } 

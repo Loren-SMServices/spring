@@ -1,13 +1,14 @@
 <button (click)="obtenerMensaje()">Obtener Mensaje</button>
-<div *ngIf="mensaje.length > 0; else noDatos">
+<div *ngIf="datos.length > 0; else noDatos">
     <h1>Datos obtenidos:</h1>
     <ul>
-      <li *ngFor="let user of mensaje">
+      <li *ngFor="let user of datos">
         {{ user.id }} - {{ user.firstName }}
       </li>
     </ul>
   </div>
-  
+  <input [(ngModel)]="nuevoMensaje" placeholder="Introduce un mensaje">
+  <button (click)="enviarMensaje()">Enviar Mensaje</button>
   <ng-template #noDatos>
     <p>No hay datos disponibles.</p>
   </ng-template>

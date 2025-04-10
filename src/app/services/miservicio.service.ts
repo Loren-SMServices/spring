@@ -8,18 +8,18 @@ import { Observable } from 'rxjs';
 }) 
 
 export class MiservicioService { 
-  private apiUrl = 'http://localhost:8080/test/envio'; 
+  private apiUrl = 'http://localhost:8080/test/'; 
 
   constructor(private http: HttpClient) {} 
 
   // Obtener mensaje desde el backend 
   obtenerMensaje(): Observable<any> { 
-    return this.http.get<any>(this.apiUrl); 
+    return this.http.get<any>(this.apiUrl+'enviar'); 
   } 
 
   // Enviar mensaje al backend 
   enviarMensaje(mensaje: string): Observable<string> { 
-    return this.http.post(this.apiUrl, mensaje, { responseType: 'text' }); 
+    return this.http.post<string>(this.apiUrl+'recibir', mensaje); 
   } 
 
 } 
