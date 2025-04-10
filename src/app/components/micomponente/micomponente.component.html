@@ -1,0 +1,14 @@
+<button (click)="obtenerMensaje()">Obtener Mensaje</button>
+<div *ngIf="mensaje.length > 0; else noDatos">
+    <h1>Datos obtenidos:</h1>
+    <ul>
+      <li *ngFor="let user of mensaje">
+        {{ user.id }} - {{ user.firstName }}
+      </li>
+    </ul>
+  </div>
+  
+  <ng-template #noDatos>
+    <p>No hay datos disponibles.</p>
+  </ng-template>
+  
